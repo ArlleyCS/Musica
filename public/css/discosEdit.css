@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amarante', sans-serif;
+    background-color: #010421;
+    color: #FFFF00;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: #010535;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+}
+
+.sidebar .logo img {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #FFFF00;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav a:hover {
+    background-color: #FFFF00;
+    color: #010535;
+}
+
+.content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-disco-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.disco-dados, .disco-faixas, .disco-foto {
+    background-color: #010535;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #FFFF00;
+}
+
+.disco-dados h2, .disco-faixas h2, .disco-foto h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-group label {
+    font-size: 1em;
+    color: #FFFF00;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #FFD700;
+    border-radius: 5px;
+    background-color: #010421;
+    color: #FFFF00;
+}
+
+.faixa-list {
+    list-style: none;
+    padding: 0;
+}
+
+.faixa-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #FFD700;
+}
+
+.faixa-item:last-child {
+    border-bottom: none;
+}
+
+.faixa-titulo {
+    font-size: 1.1em;
+    color: #FFFF00;
+}
+
+.faixa-options {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-faixa, .delete-faixa, .confirm-edit-button, .submit-button {
+    background-color: #FFFF00;
+    border: none;
+    color: #010535;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-faixa:hover, .delete-faixa:hover, .confirm-edit-button:hover, .submit-button:hover {
+    background-color: #FFD700;
+}
+
+.disco-foto img {
+    display: block;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+input[type="file"] {
+    font-family: 'Amarante', sans-serif;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #FFD700;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus {
+    border-color: #FFD700;
+}

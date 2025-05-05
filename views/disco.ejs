@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= disco.titulo %> - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/disco.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <div class="disco-container">
+            <div class="capa">
+                <img src="/<%= disco.capa %>" alt="Capa do disco <%= disco.titulo %>">
+            </div>
+            <div class="dados">
+                <h1><%= disco.titulo %></h1>
+                <p><strong>Ano de Lançamento:</strong> <%= disco.ano_lancamento %></p>
+                <div class="disco-options">
+                    <a href="/discos/<%= disco.id %>/edit" class="edit-disco">Editar</a>
+                    <form action="/discos/<%= disco.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este disco?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="delete-disco">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="faixas-container">
+            <h3>Faixas de <%= disco.titulo %></h3>
+            <div class="faixas-list">
+                <% disco.faixas.forEach(function(faixa) { %>
+                    <div class="faixa-item">
+                        <button class="faixa-name" onclick="window.location.href='/faixas/<%= faixa.id %>'">
+                            <%= faixa.titulo %>
+                        </button>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

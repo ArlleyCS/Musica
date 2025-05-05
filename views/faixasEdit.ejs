@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar <%= faixa.titulo %> - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/faixasEdit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Editar Faixa</h1>
+
+        <div class="edit-faixa-container">
+            <div class="faixa-dados">
+                <h2>Dados da Faixa</h2>
+                <form id="faixa-dados-form" method="POST" action="/faixas/<%= faixa.id %>/edit">
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="form-group">
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" value="<%= faixa.titulo %>" required>
+                    </div>
+
+                    <button type="submit" class="submit-button">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

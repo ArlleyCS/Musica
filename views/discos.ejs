@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discos - Baiano Sound</title>
+    <link rel="stylesheet" href="css/discos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Discos</h1>
+        <a href="/discos/add" class="add-disco-button">Adicionar Disco</a>
+
+        <div class="discos-list">
+            <% discos.forEach(function(disco) { %>
+                <div class="disco-item">
+                    <button class="disco-name" onclick="window.location.href='/discos/<%= disco.id %>'">
+                        <%= disco.titulo %>
+                    </button>
+                    <div class="disco-options">
+                        <% if (disco.artista && disco.artista.nome) { %>
+                            <button class="artist-button linked-artist" onclick="window.location.href='/artistas/<%= disco.artista.id %>'">
+                                <%= disco.artista.nome %>
+                            </button>
+                        <% } else { %>
+                            <button class="artist-button link-artist" onclick="window.location.href='/vincular-artista/<%= disco.id %>'">
+                                Vincular artista
+                            </button>
+                        <% } %>
+                        <button class="edit-disco" onclick="window.location.href='/discos/<%= disco.id %>/edit'">Editar</button>
+
+                        <form action="/discos/<%= disco.id %>" method="POST" onsubmit="return confirm('Excluir dico e faixas?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-disco">Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faixas - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/faixas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Faixas</h1>
+
+        <div class="tracks-list">
+            <% if (faixas && faixas.length > 0) { %>
+                <% faixas.forEach(function(faixa) { %>
+                    <div class="track-item">
+                        <h3 class="track-title"><%= faixa.titulo %></h3>
+
+                        <% if (faixa.Generos && faixa.Generos.length > 0) { %>
+                            <% faixa.Generos.forEach(function(genero) { %>
+                                <p><%= genero.nome %></p>
+                            <% }) %>
+                        <% } else { %>
+                            <p>Nenhum gênero associado</p>
+                        <% } %>
+
+                        <% if (faixa.Disco) { %>
+                            <button class="disco-button linked-disco" onclick="window.location.href='/discos/<%= faixa.Disco.id %>'">
+                                Disco: <%= faixa.Disco.titulo %>
+                            </button>
+                        <% } else { %>
+                            <button class="disco-button link-disco" onclick="window.location.href='/vincular-disco/<%= faixa.id %>'">
+                                Vincular disco
+                            </button>
+                        <% } %>
+
+                        <div class="track-options">
+                            <button class="edit-track" onclick="window.location.href='/faixas/<%= faixa.id %>/edit'">Editar</button>
+                            <form action="/faixas/<%= faixa.id %>" method="POST" onsubmit="return confirm('Excluir esta faixa?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="delete-track">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>Nenhuma faixa encontrada</p>
+            <% } %>
+        </div>
+    </main>
+</body>
+</html>

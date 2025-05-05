@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar <%= disco.titulo %> - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/discosEdit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Editar Disco</h1>
+
+        <div class="edit-disco-container">
+            <div class="disco-dados">
+                <h2>Dados do Disco</h2>
+                <form id="disco-dados-form" method="POST" action="/discos/<%= disco.id %>/edit/dados">
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="form-group">
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" value="<%= disco.titulo %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ano_lancamento">Ano de Lançamento:</label>
+                        <input type="number" id="ano_lancamento" name="ano_lancamento" value="<%= disco.ano_lancamento %>" required>
+                    </div>
+
+                    <button type="submit" class="submit-button">Salvar</button>
+                </form>
+            </div>
+
+            <div class="disco-foto">
+                <h2>Editar Capa</h2>
+                <img src="/<%= disco.capa %>" alt="Capa do Disco" class="disco-photo">
+                <form action="/discos/<%= disco.id %>/edit/capa" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
+                    <label for="capa">Nova capa:</label>
+                    <input type="file" id="capa" name="capa" accept="image/*" required>
+                    <button type="submit" class="confirm-edit-button">Substituir</button>
+                </form>
+            </div>
+
+            <div class="disco-faixas">
+                <h2>Faixas</h2>
+                <ul class="faixa-list">
+                    <% faixas.forEach((faixa) => { %>
+                    <% if (faixa.discoId === disco.id) { %>
+                    <li class="faixa-item">
+                        <span class="faixa-titulo"><%= faixa.titulo %></span>
+                        <div class="faixa-options">
+                            <button class="edit-faixa" onclick="window.location.href='/faixas/<%= faixa.id %>/edit'">
+                                Editar
+                            </button>
+                            <form action="/faixas/<%= faixa.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir esta faixa?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="delete-faixa">Excluir</button>
+                            </form>
+                        </div>
+                    </li>
+                    <% } %>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

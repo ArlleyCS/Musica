@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar <%= genero.nome %> - BraunBeat</title>
+    <link rel="stylesheet" href="/css/generosEdit.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="BraunBeat Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Editar Gênero</h1>
+
+        <div class="edit-genero-container">
+            <div class="genero-dados">
+                <h2>Dados do Gênero</h2>
+                <form id="genero-dados-form" method="POST" action="/generos/<%= genero.id %>/edit">
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" value="<%= genero.nome %>" required>
+                    </div>
+
+                    <button type="submit" class="submit-button">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

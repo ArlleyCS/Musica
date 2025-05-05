@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Artista - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/artistasAdd.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Adicionar Artista</h1>
+        <form action="/artistas/add" method="POST" enctype="multipart/form-data">
+            <label for="nome">Nome do Artista</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="nacionalidade">Nacionalidade</label>
+            <input type="text" id="nacionalidade" name="nacionalidade" required>
+
+            <p>Gêneros:</p>
+            <div class="generos-checkbox">
+                <% generos.forEach((genero) => { %>
+                    <input type="checkbox" id="genero_<%= genero.id %>" name="generos[]" value="<%= genero.id %>">
+                    <label for="genero_<%= genero.id %>"><%= genero.nome %></label>
+                <% }); %>
+            </div>
+            <a href="/generos/add" class="add-genre-link">Adicionar Gênero</a>
+
+            <label for="foto">Foto do Artista</label>
+            <input type="file" id="foto" name="foto" accept="image/*" required>
+
+            <button type="submit" class="submit-btn">Adicionar Artista</button>
+        </form>
+    </main>
+
+</body>
+</html>

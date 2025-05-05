@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artista.nome %> - Baiano Sound</title>
+    <link rel="stylesheet" href="/css/artista.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <div class="artista-container">
+            <div class="foto">
+                <img src="/<%= artista.foto %>" alt="Foto de <%= artista.nome %>">
+            </div>
+            <div class="dados">
+                <h1><%= artista.nome %></h1>
+                <p><strong>Nacionalidade:</strong> <%= artista.nacionalidade %></p>
+                <p><strong>Gêneros Musicais:</strong> 
+                    <% if (artista.generos && artista.generos.length > 0) { %>
+                        <%= artista.generos.map(genero => genero.nome).join(', ') %>
+                    <% } else { %>
+                        Nenhum gênero associado
+                    <% } %>
+                </p>
+                <div class="artista-options">
+                    <a href="/artistas/<%= artista.id %>/edit" class="edit-artist">Editar</a>
+                    <form action="/artistas/<%= artista.id %>" method="POST" onsubmit="return confirm('Você tem certeza que deseja excluir este artista?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="delete-artist">Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="discos-container">
+            <h3>Discos de <%= artista.nome %></h3>
+            <div class="discos-list">
+                <% artista.discos.forEach(function(disco) { %>
+                    <div class="disco-item">
+                        <button class="disco-name" onclick="window.location.href='/discos/<%= disco.id %>'">
+                            <%= disco.titulo %>
+                        </button>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

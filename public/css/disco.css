@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Amarante', sans-serif;
+    background-color: #010421;
+    color: #FFFF00;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: #010535;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.sidebar .logo img {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #FFFF00;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav a:hover {
+    background-color: #FFFF00;
+    color: #010535;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.disco-container {
+    display: flex;
+    gap: 20px;
+    background-color: #010535;
+    color: #FFFF00;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.disco-container .capa img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #FFD700;
+}
+
+.disco-container .dados {
+    flex: 1;
+}
+
+.disco-container .dados h1 {
+    font-size: 2.5em;
+    color: #FFFF00;
+    margin-bottom: 10px;
+}
+
+.disco-container .dados p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.disco-options {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.edit-disco, .delete-disco {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    color: #FFFF00;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.edit-disco:hover {
+    color: #FFD700;
+}
+
+.delete-disco:hover {
+    color: #FFD700;
+}
+
+.faixas-container {
+    background-color: #010535;
+    color: #FFFF00;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.faixas-container h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.faixas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.faixa-item {
+    background-color: #010535;
+    color: #FFFF00;
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.faixa-name {
+    font-family: 'Amarante', sans-serif;
+    background-color: #010421;
+    color: #FFFF00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.faixa-name:hover {
+    background-color: #FFD700;
+}

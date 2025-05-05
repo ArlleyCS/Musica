@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistas - Baiano Sound</title>
+    <link rel="stylesheet" href="css/artistas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo-favico.png" type="image/x-icon">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="/"><img src="/images/logo.png" alt="Baiano Sound Logo"></a>
+        </div>
+        <nav>
+            <a href="/artistas">Artistas</a>
+            <a href="/discos">Discos</a>
+            <a href="/faixas">Faixas</a>
+            <a href="/generos">Gêneros</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>Artistas</h1>
+        <a href="/artistas/add" class="add-artist-button">Adicionar Artista</a>
+
+        <div class="artists-list">
+            <% artistas.forEach(function(artista) { %>
+                <div class="artist-item">
+                    <button class="artist-name" onclick="window.location.href='/artistas/<%= artista.id %>'">
+                        <%= artista.nome %>
+                    </button>
+                    <div class="artist-options">
+                        <button class="edit-artist" onclick="window.location.href='/artistas/<%= artista.id %>/edit'">
+                            Editar
+                        </button>
+                        <form action="/artistas/<%= artista.id %>" method="POST" onsubmit="return confirm('Excluir este artista?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-artist">
+                                Excluir
+                            </button>
+                        </form>  
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+</body>
+</html>
