@@ -1,7 +1,10 @@
 require('dotenv').config();
-
+const express = require('express');
 const { Sequelize } = require('sequelize');
 
+const app = express();
+
+// Configurar Sequelize (conexão com o banco)
 const sequelize = new Sequelize(
   process.env.DB_NAME || 'baianosound',
   process.env.DB_USER || 'baianosound_user',
@@ -14,7 +17,7 @@ const sequelize = new Sequelize(
   }
 );
 
-// Testa a conexão
+// Testar conexão com banco
 sequelize.authenticate()
   .then(() => {
     console.log('✅ Conexão com o banco de dados estabelecida com sucesso!');
@@ -23,4 +26,13 @@ sequelize.authenticate()
     console.error('❌ Não foi possível conectar ao banco de dados:', err);
   });
 
-module.exports = sequelize;
+// Rota de teste
+app.get('/', (req, res) => {
+  res.send('API BaianoSound está funcionando!');
+});
+
+// Iniciar servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+});
