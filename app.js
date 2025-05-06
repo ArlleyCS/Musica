@@ -3,8 +3,10 @@ const path = require('path');
 const app = express();
 const { sequelize } = require('./models');
 const methodOverride = require('method-override');
+const engine = require('ejs-mate');
 
 // Configuração do EJS
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
