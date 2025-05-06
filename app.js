@@ -1,10 +1,29 @@
-const sequelize = require('./config/sequelize'); // ajuste o caminho se necessário
+const { Sequelize } = require('sequelize');
+const config = require('./config.json');
 
-// Teste a conexão com o banco (opcional se já feito no sequelize.js)
+// Use o ambiente de desenvolvimento
+const env = 'development';
+const dbConfig = config[env];
+
+// Cria a instância do Sequelize
+const sequelize = new Sequelize(
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
+  {
+    host: dbConfig.host,
+    dialect: dbConfig.dialect,
+    logging: dbConfig.logging,
+  }
+);
+
+// Testa a conexão
 sequelize.authenticate()
   .then(() => {
-    console.log('Conexão com o banco de dados estabelecida com sucesso!');
+    console.log('✅ Conexão com o banco de dados estabelecida com sucesso!');
   })
   .catch(err => {
-    console.error('Não foi possível conectar ao banco de dados:', err);
+    console.error('❌ Não foi possível conectar ao banco de dados:', err);
   });
+
+module.exports = sequelize;
