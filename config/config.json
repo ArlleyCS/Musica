@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "Arlley1$",
+    "username": "baianosound_user",
+    "password": "oCs0Q1YPj1O8KoNVI6Zdtmrm9NNGnFvl",
     "database": "baianosound",
-    "host": "127.0.0.1",
+    "host": "dpg-d0cigdumcj7s73ak5pd0-a.ohio-postgres.render.com",
     "dialect": "postgres",
     "logging": false
   },
@@ -15,11 +15,12 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "baianosound_user",
+    "password": "oCs0Q1YPj1O8KoNVI6Zdtmrm9NNGnFvl",
+    "database": "baianosound",
+    "host": "dpg-d0cigdumcj7s73ak5pd0-a.ohio-postgres.render.com",
+    "dialect": "postgres"
   }
 }
+
 
