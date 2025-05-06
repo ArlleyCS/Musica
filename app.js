@@ -1,19 +1,14 @@
 const { Sequelize } = require('sequelize');
-const config = require('./config.json');
 
-// Use o ambiente de desenvolvimento
-const env = 'development';
-const dbConfig = config[env];
-
-// Cria a instância do Sequelize
 const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password,
+  process.env.DB_NAME || 'baianosound',
+  process.env.DB_USER || 'baianosound_user',
+  process.env.DB_PASS || 'oCs0Q1YPj1O8KoNVI6Zdtmrm9NNGnFvl',
   {
-    host: dbConfig.host,
-    dialect: dbConfig.dialect,
-    logging: dbConfig.logging,
+    host: process.env.DB_HOST || 'dpg-d0cigdumcj7s73ak5pd0-a.ohio-postgres.render.com',
+    port: 5432,
+    dialect: 'postgres',
+    logging: false,
   }
 );
 
