@@ -22,3 +22,7 @@ sequelize.authenticate()
   });
 
 module.exports = sequelize;
+=======
+console.log("Script carregado!");
+alert("Bem-vindo ao Baiano Music!");
+>>>>>>> parent of 133d7bc (teste)
