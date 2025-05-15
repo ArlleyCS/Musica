@@ -4,7 +4,7 @@ require('dotenv').config(); // Carrega variáveis do .env
 const express = require('express');
 const path = require('path');
 const app = express();
-const { sequelize } = require('./models'); // Importação correta da instância do Sequelize
+const sequelize = require('./config/database');
 const methodOverride = require('method-override');
 
 // Configuração do EJS
